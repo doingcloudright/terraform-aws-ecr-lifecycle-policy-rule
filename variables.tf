@@ -4,7 +4,7 @@ variable "create" {
 }
 
 variable "rule_priority" {
-  description = "The Priority of the rule, when not given the default priority:replace:this it will be replaced by $${rule_priority} for later template_file interpretation"
+  description = "The Priority of the rule, when not given the default priority:replace:this is set for later interpretation/replacement"
   default     = "priority:replace:this"
 }
 

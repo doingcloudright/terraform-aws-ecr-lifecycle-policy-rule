@@ -4,7 +4,6 @@ output "policy_rule" {
   description = "ECR Policy Rule"
 
   value = "${replace(
-           replace(
 		 replace(element(concat(
              data.template_file.lifecycle_policy_imageCountMoreThan_tagged.*.rendered,
              data.template_file.lifecycle_policy_imageCountMoreThan_untagged_or_any.*.rendered,
@@ -14,6 +13,5 @@ output "policy_rule" {
 			      ),0),
 			 "/\"(true|false|[[:digit:]]+)\"/", "$1"
 		), "string:", ""
-	      ), "priority:replace:this", "${join("",list("$$$","{rule_priority}"))}"
-            )}"
+	      )}"
 }
