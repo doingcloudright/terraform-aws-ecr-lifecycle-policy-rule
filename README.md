@@ -20,7 +20,7 @@ module "ecr_lifecycle_rule_tagged_image_count_30" {
 }
 
 output "ecr_lifecycle_rule_tagged_image_count_30" {
-  value = "${module.ecr_lifecycle_rule_tagged_image_count_30.policy}"
+  value = "${module.ecr_lifecycle_rule_tagged_image_count_30.policy_rule}"
 }
 ```
 
@@ -36,7 +36,7 @@ module "ecr_lifecycle_rule_tagged_90_days_since_image_pushed" {
 }
 
 output "ecr_lifecycle_rule_tagged_90_days_since_image_pushed" {
-  value = "${module.ecr_lifecycle_rule_tagged_90_days_since_image_pushed.policy}"
+  value = "${module.ecr_lifecycle_rule_tagged_90_days_since_image_pushed.policy_rule}"
 }
 ```
 
@@ -51,7 +51,7 @@ module "ecr_lifecycle_rule_any_7_images" {
 }
 
 output "ecr_lifecycle_rule_any_7_images" {
-  value = "${module.ecr_lifecycle_rule_any_7_images.policy}"
+  value = "${module.ecr_lifecycle_rule_any_7_images.policy_rule}"
 }
 ```
 
@@ -66,6 +66,6 @@ module "ecr_lifecycle_rule_untagged_100_days_since_image_pushed" {
 }
 
 output "ecr_lifecycle_rule_untagged_100_days_since_image_pushed" {
-  value = "${module.ecr_lifecycle_rule_untagged_100_days_since_image_pushed.policy}"
+  value = "${module.ecr_lifecycle_rule_untagged_100_days_since_image_pushed.policy_rule}"
 }
 ```
