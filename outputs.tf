@@ -5,12 +5,13 @@ output "policy_rule" {
 
   value = "${replace(
            replace(
-		       replace("{\"rules\": [${join(",",concat(
+		 replace(element(concat(
              data.template_file.lifecycle_policy_imageCountMoreThan_tagged.*.rendered,
              data.template_file.lifecycle_policy_imageCountMoreThan_untagged_or_any.*.rendered,
              data.template_file.lifecycle_policy_sinceImagePushed_tagged.*.rendered,
-             data.template_file.lifecycle_policy_sinceImagePushed_untagged_or_any.*.rendered
-			      ))}]}",
+             data.template_file.lifecycle_policy_sinceImagePushed_untagged_or_any.*.rendered,
+             list("")
+			      ),0),
 			 "/\"(true|false|[[:digit:]]+)\"/", "$1"
 		), "string:", ""
 	      ), "priority:replace:this", "${join("",list("$$$","{rule_priority}"))}"

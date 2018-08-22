@@ -30,19 +30,17 @@ locals {
   # countType imageCountMoreThan
   # tag_status untagged or any
   policy_based_on_imageCountMoreThan_for_tag_status_untagged_or_any {
-    for_tag_status_untagged_or_any = {
-      rulePriority = "$${rule_priority}"
-      description  = "Rotate images after amount of: $${count_number} is reached for $${tag_status} images"
+    rulePriority = "$${rule_priority}"
+    description  = "Rotate images after amount of: $${count_number} is reached for $${tag_status} images"
 
-      selection = {
-        tagStatus   = "$${tag_status}"
-        countType   = "imageCountMoreThan"
-        countNumber = "$${count_number}"
-      }
+    selection = {
+      tagStatus   = "$${tag_status}"
+      countType   = "imageCountMoreThan"
+      countNumber = "$${count_number}"
+    }
 
-      action = {
-        type = "expire"
-      }
+    action = {
+      type = "expire"
     }
   }
   # policy rule template for

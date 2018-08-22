@@ -24,9 +24,9 @@ output "ecr_lifecycle_rule_tagged_image_count_30" {
 }
 ```
 
-### Rotate images after 90 days since image pushed for ["test","uat","prod"]
+### Rotate images after 40 days since image pushed for ["test","uat","prod"]
 ```
-module "ecr_lifecycle_rule_tagged_90_days_since_image_pushed" {
+module "ecr_lifecycle_rule_tagged_40_days_since_image_pushed" {
   source = "doingcloudright/ecr-lifecycle-policy-rule/aws"
 
   tag_status = "tagged"
@@ -35,8 +35,8 @@ module "ecr_lifecycle_rule_tagged_90_days_since_image_pushed" {
   prefixes  = ["test","uat","prod"]
 }
 
-output "ecr_lifecycle_rule_tagged_90_days_since_image_pushed" {
-  value = "${module.ecr_lifecycle_rule_tagged_90_days_since_image_pushed.policy_rule}"
+output "ecr_lifecycle_rule_tagged_40_days_since_image_pushed" {
+  value = "${module.ecr_lifecycle_rule_tagged_40_days_since_image_pushed.policy_rule}"
 }
 ```
 
