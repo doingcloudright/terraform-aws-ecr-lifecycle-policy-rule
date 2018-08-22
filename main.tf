@@ -13,7 +13,7 @@ locals {
   # tag_status tagged
   policy_based_on_imageCountMoreThan_for_tag_status_tagged {
     rulePriority = "$${rule_priority}"
-    description  = "Rotate images after amount of: $${count_number} is reached for prefix $${prefix}"
+    description  = "Rotate images after amount of: $${count_number} is reached for prefix $${prefix_flat}"
 
     selection = {
       tagStatus     = "tagged"
@@ -48,7 +48,7 @@ locals {
   # tag_status tagged
   policy_based_on_sinceImagePushed_for_tag_status_tagged {
     rulePriority = "$${rule_priority}"
-    description  = "Rotate images after amount of: $${count_number} days since image pushed, is reached for prefix $${prefix}"
+    description  = "Rotate images after amount of: $${count_number} days since image pushed, is reached for prefix $${prefix_flat}"
 
     selection = {
       tagStatus     = "tagged"
@@ -93,6 +93,7 @@ data "template_file" "lifecycle_policy_imageCountMoreThan_tagged" {
   vars {
     rule_priority = "${var.rule_priority}"
     prefix        = "${join("\",\"",var.prefixes)}"
+    prefix_flat   = "${join(",",var.prefixes)}"
 
     count_number = "${var.count_number}"
   }
@@ -125,6 +126,7 @@ data "template_file" "lifecycle_policy_sinceImagePushed_tagged" {
   vars {
     rule_priority = "${var.rule_priority}"
     prefix        = "${join("\",\"",var.prefixes)}"
+    prefix_flat   = "${join(",",var.prefixes)}"
 
     # If there is no count defined in the map var.prefixes_pecific_max_count, we take the var.count_number
     count_number = "${var.count_number}"
