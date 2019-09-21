@@ -11,7 +11,7 @@ locals {
   # policy rule template for
   # countType imageCountMoreThan
   # tag_status tagged
-  policy_based_on_imageCountMoreThan_for_tag_status_tagged {
+  policy_based_on_imageCountMoreThan_for_tag_status_tagged = {
     rulePriority = "$${rule_priority}"
     description  = "Rotate images after amount of: $${count_number} is reached for prefix $${prefix_flat}"
 
@@ -29,7 +29,7 @@ locals {
   # policy rule template for
   # countType imageCountMoreThan
   # tag_status untagged or any
-  policy_based_on_imageCountMoreThan_for_tag_status_untagged_or_any {
+  policy_based_on_imageCountMoreThan_for_tag_status_untagged_or_any = {
     rulePriority = "$${rule_priority}"
     description  = "Rotate images after amount of: $${count_number} is reached for $${tag_status} images"
 
@@ -46,7 +46,7 @@ locals {
   # policy rule template for
   # countType sinceImagePushed
   # tag_status tagged
-  policy_based_on_sinceImagePushed_for_tag_status_tagged {
+  policy_based_on_sinceImagePushed_for_tag_status_tagged = {
     rulePriority = "$${rule_priority}"
     description  = "Rotate images after amount of: $${count_number} days since image pushed, is reached for prefix $${prefix_flat}"
 
@@ -90,7 +90,7 @@ data "template_file" "lifecycle_policy_imageCountMoreThan_tagged" {
 
   template = "${jsonencode(local.policy_based_on_imageCountMoreThan_for_tag_status_tagged)}"
 
-  vars {
+  vars = {
     rule_priority = "${var.rule_priority}"
     prefix        = "${join("\",\"",var.prefixes)}"
     prefix_flat   = "${join(",",var.prefixes)}"
@@ -107,7 +107,7 @@ data "template_file" "lifecycle_policy_imageCountMoreThan_untagged_or_any" {
 
   template = "${jsonencode(local.policy_based_on_imageCountMoreThan_for_tag_status_untagged_or_any)}"
 
-  vars {
+  vars = {
     rule_priority = "${var.rule_priority}"
     tag_status    = "${var.tag_status}"
 
@@ -123,7 +123,7 @@ data "template_file" "lifecycle_policy_sinceImagePushed_tagged" {
 
   template = "${jsonencode(local.policy_based_on_sinceImagePushed_for_tag_status_tagged)}"
 
-  vars {
+  vars = {
     rule_priority = "${var.rule_priority}"
     prefix        = "${join("\",\"",var.prefixes)}"
     prefix_flat   = "${join(",",var.prefixes)}"
@@ -141,7 +141,7 @@ data "template_file" "lifecycle_policy_sinceImagePushed_untagged_or_any" {
 
   template = "${jsonencode(local.policy_based_on_sinceImagePushed_for_tag_status_untagged_or_any)}"
 
-  vars {
+  vars = {
     rule_priority = "${var.rule_priority}"
     tag_status    = "${var.tag_status}"
 
