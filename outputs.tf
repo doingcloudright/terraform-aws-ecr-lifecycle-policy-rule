@@ -9,7 +9,7 @@ output "policy_rule" {
              data.template_file.lifecycle_policy_imageCountMoreThan_untagged_or_any.*.rendered,
              data.template_file.lifecycle_policy_sinceImagePushed_tagged.*.rendered,
              data.template_file.lifecycle_policy_sinceImagePushed_untagged_or_any.*.rendered,
-             []
+             [""]
 			      ),0),
 			 "/\"(true|false|[[:digit:]]+)\"/", "$1"
 		), "string:", ""
